@@ -28,12 +28,23 @@ var thirdHumidity = $(".firstHumidity");
 var forthHumidity = $(".firstHumidity");
 var firstHumidity = $(".firstHumidity");
 
+var cityFromLocalStorage = JSON.parse(localStorage.getItem("cityName"));
+weatherApp(cityFromLocalStorage);
+
 $("#find-city").on("click", function (event) {
   event.preventDefault();
   //console.log("me clicked");
 
   var city = $("#city-input").val();
+  var searchedBtn = $("<button>");
+  searchedBtn.text(city);
+  $(".searched").append(searchedBtn);
 
+  localStorage.setItem("cityName", JSON.stringify(city));
+  weatherApp(city);
+});
+
+function weatherApp(city) {
   var apiKey = "bbe5da90d55bd39816823c09143d06b8";
   var queryurl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -45,10 +56,18 @@ $("#find-city").on("click", function (event) {
     url: queryurl,
     method: "GET",
   }).then(function (response) {
-    // console.log(response);
+    console.log(response.weather[0].icon);
+
+    var currentImg = $("<img>");
+    currentImg.attr(
+      "src",
+      "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
+    );
+
     var actualTemp = Math.floor((response.main.temp - 273.15) * 1.8 + 32);
 
     cityName.html(response.name);
+    cityName.append(currentImg);
     cityTemp.html("Temp : " + actualTemp);
     cityHumidity.html("humidity : " + response.main.humidity);
     cityWindSpeed.html("Windspeed : " + response.wind.speed);
@@ -79,7 +98,8 @@ $("#find-city").on("click", function (event) {
         url: fiveDayQueryUrl,
         method: "GET",
       }).then(function (fivedayRes) {
-        console.log(fivedayRes.list);
+        $(".fiveDayRow").empty();
+        // console.log(fivedayRes.list[0].weather[0].icon);
         for (var i = 0; i < fivedayRes.list.length; i++) {
           if (fivedayRes.list[i].dt_txt.indexOf("12:00:00") !== -1) {
             var date = fivedayRes.list[i].dt_txt;
@@ -93,7 +113,12 @@ $("#find-city").on("click", function (event) {
             var fiveDate = $("<p>");
             fiveDate.text(date);
             var fiveImage = $("<img>");
-            fiveImage.attr("src", "");
+            fiveImage.attr(
+              "src",
+              "http://openweathermap.org/img/wn/" +
+                fivedayRes.list[i].weather[0].icon +
+                ".png"
+            );
             var fiveTemp = $("<p>");
             fiveTemp.text("Temp: " + tempF);
             var fiveHumidity = $("<p>");
@@ -105,4 +130,4 @@ $("#find-city").on("click", function (event) {
       });
     });
   });
-});
+}

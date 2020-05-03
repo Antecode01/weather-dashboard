@@ -9,4 +9,9 @@ body {
 }
 .jumbotron {
   background-color: gray;
+  text-align: center;
+  color: white;
+}
+.searched {
+  background-color: blue;
 }

@@ -5,29 +5,6 @@ var cityWindSpeed = $(".windSpeed");
 var cityUvIndex = $(".uvIndex");
 var cityLat = "";
 var cityLon = "";
-// Declaring variables for the 5-day forecast
-var firstDate = $(".firstDate");
-var secondtDate = $(".secondDate");
-
-var thirdDate = $(".thirdDate");
-var fourthDate = $(".fouthDate");
-var fifthDate = $(".fifthDate");
-var firstImage = $(".firstImg");
-var secondImage = $(".secondImg");
-var thirdImage = $(".thirdImg");
-var fourthImage = $(".fourthImg");
-var fifthImage = $(".fifthImg");
-var firstTemp = $(".firstTemp");
-var secondTemp = $(".secondTemp");
-var thirdTemp = $(".thirdTemp");
-var fourthTemp = $(".fourthTemp");
-var fifthTemp = $(".fifthTemp");
-var firstHumidity = $(".firstHumidity");
-var secondHumidity = $(".firstHumidity");
-var thirdHumidity = $(".firstHumidity");
-var forthHumidity = $(".firstHumidity");
-var firstHumidity = $(".firstHumidity");
-
 var cityFromLocalStorage = JSON.parse(localStorage.getItem("cityName"));
 weatherApp(cityFromLocalStorage);
 

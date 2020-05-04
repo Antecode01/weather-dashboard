@@ -7,11 +7,8 @@
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.jumbotron {
+.header {
   background-color: gray;
   text-align: center;
   color: white;
-}
-.searched {
-  background-color: blue;
 }

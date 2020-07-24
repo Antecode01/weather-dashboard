@@ -1,14 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+body{
+  background-image:url("sunnyday.jpg"); 
+  background-size: 100%;
+  color:#000
 
-body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .header {
   background-color: gray;
   text-align: center;
   color: white;
+  border: inset black 5px;
+}
+.col-md-2 > div {url("paper.gif");
+  background-color: blue;
 }
